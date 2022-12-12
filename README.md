@@ -16,3 +16,4 @@ Create a mobile application inspired by Motus a game show, but on a particular t
 - daily notification to make the word of the day
 - implement Tusmo's sounds (when launching the application, during the game, ...)
 - the front
+- timer
