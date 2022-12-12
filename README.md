@@ -1,6 +1,6 @@
 # Tusmo
 
-Create a mobile application inspired by Motus a game show, but on a particular theme
+Create a mobile application on android inspired by Motus a game show, but on a particular theme
 
 ## Features
 ### 19/12/22
