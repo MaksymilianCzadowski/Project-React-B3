@@ -8,6 +8,7 @@ Create a mobile application inspired by Motus a game show, but on a particular t
 - the game
 - get from an api a list of words (on a Marvel, Harry Potter, Disney theme, ...)
 - progress tracking (statistics)
+- navigation
 
 
 ### 09/01/23
