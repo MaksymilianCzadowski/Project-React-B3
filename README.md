@@ -3,11 +3,15 @@
 Create a mobile application inspired by Motus a game show, but on a particular theme
 
 ## Features
-
+###19/12/22
 - register / login
+- the game
 - get from an api a list of words (on a Marvel, Harry Potter, Disney theme, ...)
-- save your score in a database
 - progress tracking (statistics)
-- implement Tusmo's sounds (when launching the application, during the game, ...)
-- daily notification to make the word of the day
 
+
+###09/01/23
+- save your score in a database
+- daily notification to make the word of the day
+- implement Tusmo's sounds (when launching the application, during the game, ...)
+- the front
