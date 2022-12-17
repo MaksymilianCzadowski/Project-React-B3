@@ -5,15 +5,15 @@ import Grid from '../components/game/grid';
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
 const wordToGuess = wordsList[Math.floor(Math.random() * wordsList.length)];
-const guessingWord = wordToGuess.split('').map(letter => '_');
-const grid = [];
+const guessingWord =
+  wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
 
 const Game = () => {
   const [input, setInput] = React.useState('');
 
   return (
     <View>
-      <Grid numCells={guessingWord.length} guessingWord={wordToGuess} />
+      <Grid numCells={guessingWord.length} guessingWord={guessingWord} />
       <TextInputContainer>
         <TextInputStyled value={input} onChangeText={text => setInput(text)} />
       </TextInputContainer>
