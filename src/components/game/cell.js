@@ -12,6 +12,7 @@ const Cell = ({letter}) => {
 
 const CellView = styled.View`
   borderwidth: 1px;
+  margin: 5px;
 `;
 
 export default Cell;

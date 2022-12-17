@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Grid from '../components/game/grid';
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
-const wordTofind = wordsList[Math.floor(Math.random() * wordsList.length)];
-const guessingWord = wordTofind.split('').map(letter => '_');
+const wordToGuess = wordsList[Math.floor(Math.random() * wordsList.length)];
+const guessingWord = wordToGuess.split('').map(letter => '_');
 const grid = [];
 
 const Game = () => {
@@ -13,7 +13,7 @@ const Game = () => {
 
   return (
     <View>
-      <Grid numCells={guessingWord.length} guessingWord={guessingWord} />
+      <Grid numCells={guessingWord.length} guessingWord={wordToGuess} />
       <TextInputContainer>
         <TextInputStyled value={input} onChangeText={text => setInput(text)} />
       </TextInputContainer>
