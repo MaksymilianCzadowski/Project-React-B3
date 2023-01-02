@@ -1,3 +1,6 @@
+import React from 'react';
+import Cell from '../components/game/cell';
+
 const letterFound = (wordInput, wordToGuess, guessingWord) => {
   if (wordInput.length !== wordToGuess.length) {
     alert(`World should be ${wordToGuess.length} letters long`);
@@ -16,13 +19,28 @@ const letterFound = (wordInput, wordToGuess, guessingWord) => {
     }
   }
   foundWord(guessingWord);
+  return guessingWord;
 };
 
 const foundWord = (wordInput, wordToGuess) => {
   // console.log('word', word, 'wordToGuess', wordToGuess);
   if (wordInput === wordToGuess) {
-    alert('You won!');
+    console.log('You won!');
   }
 };
 
-export default {letterFound, foundWord};
+const fillGrid = (grid, numCells, guessingWord, tries, input) => {
+  for (let i = 0; i < numCells; i++) {
+    grid[tries].push(
+      <Cell key={i} letter={input[i] ? input[i] : guessingWord[i]} />,
+    );
+  }
+  for (let i = tries + 1; i < grid.length; i++) {
+    for (let j = 0; j < numCells; j++) {
+      grid[i].push(<Cell key={`empty ${j}`} letter={' '} />);
+    }
+  }
+  return grid;
+};
+
+export default {letterFound, foundWord, fillGrid};
