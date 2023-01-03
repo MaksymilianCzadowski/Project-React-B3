@@ -7,11 +7,11 @@ import Motus from '../utils/game';
 import WinAlert from '../components/game/winAlert';
 
 const randomWord = () => {
-  return wordsList[Math.floor(Math.random() * wordsList.length)];
+  return wordsList[Math.floor(Math.random() * wordsList.length)].toUpperCase();
 };
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
-let wordToGuess = randomWord().toUpperCase();
+let wordToGuess = randomWord();
 let guessingWord = wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
 
 
