@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import styled from 'styled-components';
 import Grid from '../components/game/grid';
 import Motus from '../utils/game';
+import WinAlert from '../components/game/winAlert';
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
 const wordToGuess = wordsList[Math.floor(Math.random() * wordsList.length)];
@@ -34,7 +36,8 @@ const Game = () => {
   };
 
   return (
-    <View>
+    <ViewContent>
+      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} />
       <Grid
         grid={grid}
         changeValue={setGrid}
@@ -54,7 +57,7 @@ const Game = () => {
       <TouchableOpacity onPress={() => submit()}>
         <Text>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </ViewContent>
   );
 };
 
@@ -67,6 +70,10 @@ const TextInputStyled = styled.TextInput`
   padding: 12px;
   border-radius: 12px;
   color: #0f4c61;
+`;
+
+const ViewContent = styled.View`
+  bakcgroundColor: #0f4c61;
 `;
 
 export default Game;

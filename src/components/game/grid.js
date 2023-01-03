@@ -39,4 +39,4 @@ const Row = styled.View`
   flex-direction: row;
 `;
 
-export default Grid2;
+export default Grid;
