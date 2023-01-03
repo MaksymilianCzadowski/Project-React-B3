@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import styled from 'styled-components';
 import Grid from '../components/game/grid';
-import Grid2 from '../components/game/grid';
 import Motus from '../utils/game';
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
@@ -14,10 +13,14 @@ const Game = () => {
   const [tries, setTries] = React.useState(0);
   const [grid, setGrid] = React.useState([]);
   const [history, setHistory] = React.useState([]);
+  const [gameOver, setGameOver] = React.useState(false);
 
   const submit = async () => {
-    console.log('submit', grid);
     if (currentGuessing.length === wordToGuess.length) {
+      if (currentGuessing === wordToGuess) {
+        setGameOver(true);
+        return;
+      }
       guessingWord = Motus.letterFound(
         currentGuessing,
         wordToGuess,
@@ -25,7 +28,6 @@ const Game = () => {
       );
       setHistory([...history, currentGuessing]);
       setGrid(...grid, guessingWord);
-      console.log('grid', grid);
       setTries(tries + 1);
       setCurrentGuessing('');
     }
@@ -33,15 +35,7 @@ const Game = () => {
 
   return (
     <View>
-      {/* <Grid
-        numCells={guessingWord.length}
-        guessingWord={guessingWord}
-        input={input}
-        tries={tries}
-        changeValue={setGrid}
-        grid={grid}
-      /> */}
-      <Grid2
+      <Grid
         grid={grid}
         changeValue={setGrid}
         currentGuessing={currentGuessing}

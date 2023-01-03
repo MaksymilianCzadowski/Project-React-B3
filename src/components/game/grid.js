@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 import Cell from './cell';
 
-const Grid2 = ({
+const Grid = ({
   grid,
   tries,
   currentGuessing,
@@ -32,8 +32,6 @@ const Grid2 = ({
       }
     }
   }
-  console.log('history', history);
-  console.log('gridDisplay', gridDisplay);
   return gridDisplay.map((row, index) => <Row key={index}>{row}</Row>);
 };
 
