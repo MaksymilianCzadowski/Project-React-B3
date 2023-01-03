@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 
-const Cell = ({letter}) => {
+const Cell = ({letter, wordToGuess}) => {
   return (
     <CellView>
       <Letter>{letter}</Letter>
@@ -25,6 +25,7 @@ const Letter = styled.Text`
   color: white;
   font-size: 24px;
   text-align: center;
+  fontweight: bold;
 `;
 
 export default Cell;
