@@ -11,7 +11,7 @@ const randomWord = () => {
 };
 
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
-let wordToGuess = randomWord();
+let wordToGuess = randomWord().toUpperCase();
 let guessingWord = wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
 
 
@@ -68,7 +68,7 @@ const Game = () => {
         <TextInputStyled
           maxLength={wordToGuess.length}
           value={currentGuessing}
-          onChangeText={text => setCurrentGuessing(text)}
+          onChangeText={text => setCurrentGuessing(text.toUpperCase())}
         />
       </TextInputContainer>
       <TouchableOpacity onPress={() => submit()}>
@@ -86,14 +86,14 @@ const TextInputContainer = styled.View`
 `;
 
 const TextInputStyled = styled.TextInput`
-  background-color: white;
+  backgroundColor: white;
   padding: 12px;
   border-radius: 12px;
   color: #0f4c61;
 `;
 
 const ViewContent = styled.View`
-  bakcgroundColor: #0f4c61;
+  backgroundColor: #0f4c61;
 `;
 
 export default Game;

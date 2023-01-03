@@ -17,6 +17,8 @@ const CellView = styled.View`
   width: 40px;
   height: 40px;
   justify-content: center;
+  border: 2px;
+  border-color: white;
 `;
 
 const Letter = styled.Text`
