@@ -22,6 +22,7 @@ const Game = () => {
   const [grid, setGrid] = React.useState([]);
   const [history, setHistory] = React.useState([]);
   const [gameOver, setGameOver] = React.useState(false);
+  const [validate, setValidate] = React.useState(false);
 
   const submit = async () => {
     if (currentGuessing.length === wordToGuess.length) {
@@ -63,6 +64,7 @@ const Game = () => {
         tries={tries}
         guessingWord={guessingWord}
         history={history}
+        validated={validate}
       />
       <TextInputContainer>
         <TextInputStyled

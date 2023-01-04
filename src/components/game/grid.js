@@ -11,6 +11,7 @@ const Grid = ({
   guessingWord,
   changeValue,
   history,
+  validated,
 }) => {
   let gridDisplay = [[], [], [], [], [], []];
   for (let i = 0; i < wordToGuess.length; i++) {
@@ -30,6 +31,8 @@ const Grid = ({
             key={`empty ${j}`}
             letter={history[i][j]}
             wordToGuess={wordToGuess}
+            letterToGuess={wordToGuess[j]}
+            validated={true}
           />,
         );
       }
@@ -39,11 +42,22 @@ const Grid = ({
       }
     }
   }
-  return gridDisplay.map((row, index) => <Row key={index}>{row}</Row>);
+  return (
+    <CenteredView>
+      {gridDisplay.map((row, index) => (
+        <Row key={index}>{row}</Row>
+      ))}
+    </CenteredView>
+  );
 };
 
 const Row = styled.View`
   flex-direction: row;
+`;
+
+const CenteredView = styled.View`
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Grid;
