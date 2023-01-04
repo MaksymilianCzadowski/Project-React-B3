@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Grid from '../components/game/grid';
 import Motus from '../utils/game';
 import WinAlert from '../components/game/winAlert';
+import Header from '../components/game/header';
 
 const randomWord = () => {
   return wordsList[Math.floor(Math.random() * wordsList.length)].toUpperCase();
@@ -54,6 +55,7 @@ const Game = () => {
 
   return (
     <ViewContent>
+      <Header />
       <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} newGame={reset} />
       <Grid
         grid={grid}
