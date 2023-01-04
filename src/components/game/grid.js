@@ -18,13 +18,20 @@ const Grid = ({
       <Cell
         key={i}
         letter={currentGuessing[i] ? currentGuessing[i] : guessingWord[i]}
+        wordToGuess={wordToGuess}
       />,
     );
   }
   for (let i = 0; i < gridDisplay.length; i++) {
     if (i < tries) {
       for (let j = 0; j < wordToGuess.length; j++) {
-        gridDisplay[i].push(<Cell key={`empty ${j}`} letter={history[i][j]} />);
+        gridDisplay[i].push(
+          <Cell
+            key={`empty ${j}`}
+            letter={history[i][j]}
+            wordToGuess={wordToGuess}
+          />,
+        );
       }
     } else if (i > tries) {
       for (let j = 0; j < wordToGuess.length; j++) {

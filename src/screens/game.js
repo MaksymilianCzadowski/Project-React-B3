@@ -6,9 +6,15 @@ import Grid from '../components/game/grid';
 import Motus from '../utils/game';
 import WinAlert from '../components/game/winAlert';
 
+const randomWord = () => {
+  return wordsList[Math.floor(Math.random() * wordsList.length)].toUpperCase();
+};
+
 const wordsList = ['hello', 'console', 'world', 'react', 'native'];
-const wordToGuess = wordsList[Math.floor(Math.random() * wordsList.length)];
+let wordToGuess = randomWord();
 let guessingWord = wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
+
+
 
 const Game = () => {
   const [currentGuessing, setCurrentGuessing] = React.useState('');
@@ -35,9 +41,20 @@ const Game = () => {
     }
   };
 
+  const reset = () => {
+    console.log('reset');
+    setTries(0);
+    setGrid([]);
+    setHistory([]);
+    setGameOver(false);
+    setCurrentGuessing('');
+    wordToGuess = randomWord();
+    guessingWord = wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
+  };
+
   return (
     <ViewContent>
-      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} />
+      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} newGame={reset} />
       <Grid
         grid={grid}
         changeValue={setGrid}
@@ -51,11 +68,14 @@ const Game = () => {
         <TextInputStyled
           maxLength={wordToGuess.length}
           value={currentGuessing}
-          onChangeText={text => setCurrentGuessing(text)}
+          onChangeText={text => setCurrentGuessing(text.toUpperCase())}
         />
       </TextInputContainer>
       <TouchableOpacity onPress={() => submit()}>
         <Text>Submit</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => reset()}>
+        <Text>Reset</Text>
       </TouchableOpacity>
     </ViewContent>
   );
@@ -66,14 +86,14 @@ const TextInputContainer = styled.View`
 `;
 
 const TextInputStyled = styled.TextInput`
-  background-color: white;
+  backgroundColor: white;
   padding: 12px;
   border-radius: 12px;
   color: #0f4c61;
 `;
 
 const ViewContent = styled.View`
-  bakcgroundColor: #0f4c61;
+  backgroundColor: #0f4c61;
 `;
 
 export default Game;
