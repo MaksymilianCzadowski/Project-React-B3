@@ -96,6 +96,7 @@ const TextInputStyled = styled.TextInput`
 
 const ViewContent = styled.View`
   backgroundColor: #0f4c61;
+  height: 100%;
 `;
 
 export default Game;
