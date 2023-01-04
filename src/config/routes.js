@@ -12,8 +12,16 @@ const Routes = props => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Game" component={Game} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Home"
+          component={Home}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Game"
+          component={Game}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
