@@ -21,6 +21,7 @@ const Game = ({navigation}) => {
   const [grid, setGrid] = React.useState([]);
   const [history, setHistory] = React.useState([]);
   const [gameOver, setGameOver] = React.useState(false);
+  const [win, setWin] = React.useState(false);
 
   const goHome = () => {
     console.log('goHome');
@@ -30,6 +31,10 @@ const Game = ({navigation}) => {
   const submit = async () => {
     if (currentGuessing.length === wordToGuess.length) {
       if (currentGuessing === wordToGuess) {
+        setGameOver(true);
+        setWin(true);
+        return;
+      } else if (tries === 5) {
         setGameOver(true);
         return;
       }
@@ -51,6 +56,7 @@ const Game = ({navigation}) => {
     setHistory([]);
     setGameOver(false);
     setCurrentGuessing('');
+    setWin(false);
     wordToGuess = randomWord();
     guessingWord = wordToGuess[0] + wordToGuess.substring(1).replace(/./g, '_');
   };
@@ -58,7 +64,12 @@ const Game = ({navigation}) => {
   return (
     <ViewContent>
       <Header goHome={goHome} />
-      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} reset={reset} />
+      <WinAlert
+        hasWin={win}
+        gameOver={gameOver}
+        wordToGuess={wordToGuess}
+        reset={reset}
+      />
       <Grid
         grid={grid}
         changeValue={setGrid}

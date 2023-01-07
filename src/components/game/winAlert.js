@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Modal} from 'react-native';
 import styled from 'styled-components';
 
-const WinAlert = ({gameOver, wordToGuess, reset }) => {
+const WinAlert = ({gameOver, wordToGuess, reset, hasWin }) => {
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     if (gameOver) {
@@ -14,7 +14,7 @@ const WinAlert = ({gameOver, wordToGuess, reset }) => {
   return (
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <ModalContent>
-          <Title>Félicitation !</Title>
+          <Title>{hasWin ? 'Félicitation !' : 'Désolé :('}</Title>
           <Subtitle>Le mot était {wordToGuess}</Subtitle>
           <Button onPress={() => {
             reset();
@@ -49,13 +49,6 @@ const Title = styled.Text`
 const Subtitle = styled.Text`
   fontSize: 16px;
   marginBottom: 12px;
-`;
-
-const CenteredView = styled.View`
-  flex: 1;
-  justifyContent: center;
-  alignItems: center;
-  borderRadius: 20px;
 `;
 
 const Button = styled.TouchableOpacity`
