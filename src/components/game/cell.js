@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
@@ -18,7 +17,11 @@ const Cell = ({letter, wordToGuess, validated, letterToGuess, isGuessing}) => {
     }
   };
   return (
-    <CellView validated={validated} color={guessedLetter()} isGuessing={isGuessing} letter={letter} >
+    <CellView
+      validated={validated}
+      color={guessedLetter()}
+      isGuessing={isGuessing}
+      letter={letter}>
       <Letter>{letter}</Letter>
     </CellView>
   );
@@ -28,7 +31,12 @@ const CellView = styled.View`
   borderwidth: 1px;
   margin: 5px;
   background-color: #0f4c61;
-  background-color: ${props => (props.isGuessing && props.letter !== '_' ? '#0a9396ff' : props.validated ? props.color : '#0f4c61')};
+  background-color: ${props =>
+    props.isGuessing && props.letter !== ' '
+      ? '#0a9396ff'
+      : props.validated
+      ? props.color
+      : '#0f4c61'};
   width: 40px;
   height: 40px;
   justify-content: center;
@@ -40,7 +48,7 @@ const Letter = styled.Text`
   color: white;
   font-size: 24px;
   text-align: center;
-  fontWeight: bold;
+  font-weight: bold;
 `;
 
 export default Cell;

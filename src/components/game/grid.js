@@ -18,7 +18,13 @@ const Grid = ({
     gridDisplay[tries].push(
       <Cell
         key={i}
-        letter={currentGuessing[i] ? currentGuessing[i] : guessingWord[i]}
+        letter={
+          currentGuessing[i]
+            ? currentGuessing[i]
+            : i === 0
+            ? wordToGuess[0]
+            : ' '
+        }
         wordToGuess={wordToGuess}
         isGuessing={currentGuessing[i] !== '_' ? true : false}
       />,
