@@ -4,28 +4,13 @@ import styled from 'styled-components';
 import ImageResizer from '@bam.tech/react-native-image-resizer';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-const Header = () => {
-  const [imageUri, setImageUri] = useState(null);
-
-  const imageUrl = '../../assets/img/tusmo-logo.png';
-  const newWidth = 100;
-  const newHeight = 50;
-
-  useEffect(() => {
-    ImageResizer.createResizedImage(imageUrl, newWidth, newHeight, 'PNG', 100)
-      .then(response => {
-        const {uri} = response;
-        setImageUri(uri);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
-
+const Header = ({goHome}) => {
   return (
     <HeaderDiv>
       <ViewDiv>
-        <HomeButt>{/* ici mettre le logo de home */}</HomeButt>
+        <HomeButt onPress={() => goHome()}>
+          <LogoView source={require('../../assets/img/home.png')} />
+        </HomeButt>
         <LogoView
           resizeMode="cover"
           source={require('../../assets/img/tusmo-logo.png')}
