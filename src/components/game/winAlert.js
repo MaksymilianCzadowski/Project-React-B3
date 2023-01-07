@@ -1,9 +1,9 @@
-/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Modal} from 'react-native';
 import styled from 'styled-components';
+import Sound from 'react-native-sound';
 
-const WinAlert = ({gameOver, wordToGuess, reset, hasWin }) => {
+const WinAlert = ({gameOver, wordToGuess, reset, hasWin}) => {
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     if (gameOver) {
@@ -11,57 +11,78 @@ const WinAlert = ({gameOver, wordToGuess, reset, hasWin }) => {
     }
   }, [gameOver]);
 
+  useEffect(() => {
+    if (hasWin) {
+      const winSound = new Sound(
+        require('../../../assets/letter-found.mp3'),
+        error => {
+          if (error) {
+            console.log('failed to load the sound', error);
+            return;
+          }
+          // for (let i = 0; i < wordToGuess.lenght; i++) {
+          //   console.log('play');
+          //   winSound.playAsync();
+          // }
+          // console.log(wordToGuess.lenght);
+          // winSound.play(5);
+        },
+      );
+    }
+  }, [hasWin]);
+
   return (
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <ModalContent>
-          <Title>{hasWin ? 'Félicitation !' : 'Désolé :('}</Title>
-          <Subtitle>Le mot était {wordToGuess}</Subtitle>
-          <Button onPress={() => {
+    <Modal animationType="slide" transparent={true} visible={modalVisible}>
+      <ModalContent>
+        <Title>{hasWin ? 'Félicitation !' : 'Désolé :('}</Title>
+        <Subtitle>Le mot était {wordToGuess}</Subtitle>
+        <Button
+          onPress={() => {
             reset();
             setModalVisible(!modalVisible);
-          }} >
-            <ButtonText>Rejouer</ButtonText>
-          </Button>
-        </ModalContent>
-      </Modal>
+          }}>
+          <ButtonText>Rejouer</ButtonText>
+        </Button>
+      </ModalContent>
+    </Modal>
   );
 };
 
 const ModalContent = styled.View`
-backgroundColor: white;
-padding: 22px;
-justifyContent: center;
-alignItems: center;
-borderRadius: 20px;
-borderColor: 'rgba(0, 0, 0, 0.1)';
-width: 200px;
-height: 200px;
-position: absolute;
-top: 35%;
-left: 25%;
+  background-color: white;
+  padding: 22px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border-color: 'rgba(0, 0, 0, 0.1)';
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 35%;
+  left: 25%;
 `;
 
 const Title = styled.Text`
-  fontSize: 20px;
-  marginBottom: 12px;
+  font-size: 20px;
+  margin-bottom: 12px;
 `;
 
 const Subtitle = styled.Text`
-  fontSize: 16px;
-  marginBottom: 12px;
+  font-size: 16px;
+  margin-bottom: 12px;
 `;
 
 const Button = styled.TouchableOpacity`
-  backgroundColor: #0f4c61;
-  borderRadius: 20px;
+  background-color: #0f4c61;
+  border-radius: 20px;
   padding: 10px;
   elevation: 2;
 `;
 
 const ButtonText = styled.Text`
   color: white;
-  fontWeight: bold;
-  textAlign: center;
+  font-weight: bold;
+  text-align: center;
 `;
 
 export default WinAlert;
