@@ -46,7 +46,6 @@ const Game = ({navigation}) => {
   };
 
   const reset = () => {
-    console.log('reset');
     setTries(0);
     setGrid([]);
     setHistory([]);
@@ -59,7 +58,7 @@ const Game = ({navigation}) => {
   return (
     <ViewContent>
       <Header goHome={goHome} />
-      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} newGame={reset} />
+      <WinAlert gameOver={gameOver} wordToGuess={wordToGuess} reset={reset} />
       <Grid
         grid={grid}
         changeValue={setGrid}

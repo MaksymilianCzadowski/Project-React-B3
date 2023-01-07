@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Modal} from 'react-native';
 import styled from 'styled-components';
 
-const WinAlert = ({gameOver, wordToGuess, newGame }) => {
+const WinAlert = ({gameOver, wordToGuess, reset }) => {
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     if (gameOver) {
@@ -17,7 +17,7 @@ const WinAlert = ({gameOver, wordToGuess, newGame }) => {
           <Title>Félicitation !</Title>
           <Subtitle>Le mot était {wordToGuess}</Subtitle>
           <Button onPress={() => {
-            newGame;
+            reset();
             setModalVisible(!modalVisible);
           }} >
             <ButtonText>Rejouer</ButtonText>
