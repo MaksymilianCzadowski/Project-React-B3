@@ -6,7 +6,7 @@ const Login = ({navigation}) => {
   const [input, setInput] = React.useState({email: '', password: ''});
 
   const logMeIn = () => {
-    if (input.email === 'admin' && input.password === 'admin') {
+    if (input.email === 'Maks' && input.password === 'azerty') {
       navigation.navigate('Home');
     } else {
       alert('Invalid Credentials');
