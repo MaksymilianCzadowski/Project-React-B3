@@ -6,6 +6,7 @@ import Motus from '../utils/game';
 import WinAlert from '../components/game/winAlert';
 import Header from '../components/game/header';
 import Keyboard from '../components/game/keyboard';
+import Notification from '../notification/notificationConfig';
 
 const randomWord = () => {
   return wordsList[Math.floor(Math.random() * wordsList.length)].toUpperCase();
@@ -85,6 +86,7 @@ const Game = ({navigation}) => {
         submit={submit}
         wordToGuess={wordToGuess}
       />
+      <Notification />
     </ViewContent>
   );
 };
