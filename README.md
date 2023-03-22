@@ -17,3 +17,5 @@ Create a mobile application on android inspired by Motus a game show, but on a p
 - implement Tusmo's sounds (when launching the application, during the game, ...)
 - the front
 - timer
+
+à lancer sur Linux
